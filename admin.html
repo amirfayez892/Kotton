@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>لوحة تحكم Kotton</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+
+<header class="nav">
+  <span class="brand"><img src="logo.png" alt="KOTTON"></span>
+  <span class="adm-title">لوحة التحكم</span>
+  <button type="button" class="cart-btn" id="logout" hidden>خروج</button>
+</header>
+
+<main class="adm-main">
+
+  <div class="adm-box" id="setup-warning" hidden>
+    <h2>الإعداد ناقص</h2>
+    <p>لسه ماتملتش ملف <b>config.js</b> برابط المشروع والمفتاح العام من Supabase. افتح ملف <b>خطوات-التشغيل.txt</b> واتبع الخطوات.</p>
+  </div>
+
+  <div class="adm-box" id="login-view" hidden>
+    <h2>دخول صاحب المتجر</h2>
+    <p class="note">الصفحة دي لصاحب المتجر بس. العملاء مش بيشوفوها.</p>
+    <form id="login-form">
+      <label>الإيميل<input name="email" type="email" dir="ltr" autocomplete="username" required></label>
+      <label>الباسورد<input name="password" type="password" dir="ltr" autocomplete="current-password" required></label>
+      <p class="err" id="login-err" role="alert"></p>
+      <button type="submit" class="btn btn-dark block" id="login-btn">دخول</button>
+    </form>
+  </div>
+
+  <div id="panel-view" hidden>
+    <div class="adm-head">
+      <h2>المنتجات</h2>
+      <div class="adm-actions">
+        <button type="button" class="btn btn-line" id="refresh">تحديث</button>
+        <button type="button" class="btn btn-dark" id="add-product">+ منتج جديد</button>
+      </div>
+    </div>
+    <p class="note">أي تعديل هنا يظهر للعملاء على الموقع فورًا.</p>
+    <p class="err" id="panel-err" role="alert"></p>
+    <div id="plist" class="plist"></div>
+  </div>
+
+  <div class="adm-box" id="editor-view" hidden>
+    <h2 id="editor-title">منتج جديد</h2>
+    <form id="editor-form">
+      <label>اسم المنتج<input name="pname" type="text" required placeholder="مثال: تيشيرت أوفر سايز"></label>
+      <div class="row2">
+        <label>السعر (بالجنيه)<input name="pprice" type="number" min="1" step="1" dir="ltr" required placeholder="650"></label>
+        <label>الترتيب في الموقع<input name="psort" type="number" step="1" dir="ltr" placeholder="1"></label>
+      </div>
+      <label>الوصف<textarea name="pdesc" rows="2" placeholder="وصف قصير يظهر للعميل"></textarea></label>
+
+      <fieldset class="fset">
+        <legend>المقاسات المتاحة</legend>
+        <div class="sizechecks" id="sizechecks"></div>
+      </fieldset>
+
+      <fieldset class="fset">
+        <legend>الألوان والصور</legend>
+        <p class="note">كل لون ليه صورته. اضغط "اختار صورة" عشان ترفع صورة اللون من موبايلك.</p>
+        <div id="colors"></div>
+        <button type="button" class="btn btn-line" id="add-color">+ إضافة لون</button>
+      </fieldset>
+
+      <label class="checkline"><input type="checkbox" name="psoldout"> المنتج خلص (يظهر للعملاء "خلص" وميعرفوش يضيفوه للسلة)</label>
+
+      <p class="err" id="editor-err" role="alert"></p>
+      <button type="submit" class="btn btn-dark block" id="save-btn">حفظ المنتج</button>
+      <button type="button" class="btn-link" id="cancel-edit">إلغاء</button>
+    </form>
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

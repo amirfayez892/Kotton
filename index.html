@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KOTTON | The Artistic Fashion of the Generation</title>
+<meta name="description" content="Kotton، براند ملابس مصري من السويس. اطلب بسهولة عن طريق واتساب، شحن لكل المحافظات.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a href="#top" class="brand"><img src="logo.png" alt="KOTTON"></a>
+  <nav>
+    <a href="#products">المنتجات</a>
+    <a href="#order">اطلب</a>
+    <a href="#contact">تواصل</a>
+  </nav>
+  <button type="button" class="cart-btn" id="cart-open" aria-label="السلة">السلة <span class="cart-count" id="cart-count">0</span></button>
+</header>
+
+<section class="hero" id="top">
+  <img class="hero-logo" src="logo.png" alt="KOTTON">
+  <p class="eyebrow">THE ARTISTIC FASHION OF THE GENERATION</p>
+  <h1>ملابس بسيطة.<br>شخصية قوية.</h1>
+  <p class="sub">اختار قطعتك ولونك، واطلب على واتساب في دقيقة. شحن لكل المحافظات.</p>
+  <div class="cta-row">
+    <a class="btn btn-dark" href="#products">شوف المنتجات</a>
+    <a class="btn btn-line" href="https://wa.me/201031387379" target="_blank" rel="noopener">اطلب على واتساب</a>
+  </div>
+</section>
+
+<section class="strip">
+  <div>شحن لكل المحافظات</div><div>الطلب عن طريق واتساب</div><div>مفتوحين ١٢ ظهرا - ١٢ بالليل</div>
+</section>
+
+<section class="section" id="products">
+  <h2>المنتجات</h2>
+  <p class="note">اضغط على المنتج عشان تشوف كل الألوان والتفاصيل. كل الأسعار غير شاملة مصاريف الشحن.</p>
+  <div class="grid" id="grid"><p class="note" id="grid-loading">بنجهز المنتجات...</p></div>
+</section>
+
+<div class="modal" id="modal" hidden>
+  <div class="backdrop" id="backdrop"></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-name">
+    <button class="close" id="close" aria-label="إغلاق">&times;</button>
+    <div class="m-photo"><img id="m-img" alt=""></div>
+    <div class="m-body">
+      <h3 id="m-name"></h3>
+      <p class="price"><span id="m-price"></span> <span class="ex">غير شامل الشحن</span></p>
+      <p class="m-desc" id="m-desc"></p>
+      <p class="soldout-note" id="m-soldout" hidden>المنتج ده خلص حاليًا. تابعنا، بيرجع تاني قريب.</p>
+      <p class="m-label">اللون: <b id="m-color"></b></p>
+      <div class="swatches" id="swatches"></div>
+      <p class="m-label">المقاس: <b id="m-size">اختار المقاس</b></p>
+      <div class="sizes" id="sizes"></div>
+      <p class="size-err" id="size-err" hidden>اختار المقاس الأول</p>
+      <ul class="m-facts">
+        <li>شحن لكل المحافظات</li>
+        <li>الطلب عن طريق واتساب</li>
+        <li>مفتوحين ١٢ ظهرا - ١٢ بالليل</li>
+      </ul>
+      <button type="button" class="btn btn-dark" id="m-add">أضف للسلة</button>
+      <a class="m-wa" id="m-order" href="https://wa.me/201031387379" target="_blank" rel="noopener">أو اطلبه مباشرة على واتساب</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="cart" hidden>
+  <div class="backdrop" id="cart-backdrop"></div>
+  <div class="sheet cart-sheet" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <button class="close" id="cart-close" aria-label="إغلاق">&times;</button>
+    <div class="cart-body">
+      <h3 id="cart-title">سلة الطلبات</h3>
+
+      <div id="step-cart">
+        <p class="empty" id="cart-empty">السلة فاضية. اختار منتج وأضفه للسلة.</p>
+        <ul class="items" id="items"></ul>
+        <div class="totals" id="totals">
+          <div><span>إجمالي المنتجات</span><b id="t-sub"></b></div>
+          <div><span>الديبوزت (يتخصم من سعر المنتج)</span><b>200 جنيه</b></div>
+          <div class="rest"><span>المتبقي بعد الديبوزت</span><b id="t-rest"></b></div>
+        </div>
+        <p class="ship-note" id="cart-ship-note">* الأسعار غير شاملة مصاريف الشحن</p>
+        <button type="button" class="btn btn-dark block" id="to-checkout">إتمام الطلب</button>
+        <button type="button" class="btn-link" id="keep-shopping">كمّل تسوق</button>
+      </div>
+
+      <form id="step-form" hidden novalidate>
+        <div class="info-box">
+          <p><b>يرجى إرسال سكرين من التحويل مع بيانات الشحن:</b></p>
+          <ul>
+            <li>الاسم ثلاثي</li>
+            <li>العنوان بالتفصيل</li>
+            <li>رقم للتواصل + رقم إضافي إن أمكن</li>
+          </ul>
+          <p>في حالة عمل طلب شراء يرجى إرسال ديبوزت 200ج تخصم من سعر المنتج.</p>
+          <p>لدفع الديبوزت يرجى التحويل على محفظة فودافون كاش على الرقم:</p>
+          <p class="wallet"><b dir="ltr" id="wallet">01031387379</b> <button type="button" class="copy" id="copy">نسخ الرقم</button></p>
+          <p class="small">المحفظة مسجلة باسم محمد جمال (للتأكيد).</p>
+        </div>
+
+        <label>الاسم ثلاثي<input name="name" autocomplete="name" placeholder="مثال: أحمد محمد علي"></label>
+        <div class="row2">
+          <label>رقم الهاتف<input name="phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" placeholder="01xxxxxxxxx"></label>
+          <label>رقم هاتف إضافي (اختياري)<input name="phone2" type="tel" inputmode="tel" dir="ltr" placeholder="01xxxxxxxxx"></label>
+        </div>
+        <div class="row2">
+          <label>المحافظة<select name="gov"><option value="">اختار المحافظة</option></select></label>
+          <label>المركز / المنطقة<input name="markaz" placeholder="اكتب المركز أو المنطقة"></label>
+        </div>
+        <label>العنوان بالتفصيل<textarea name="address" rows="3" placeholder="الشارع، رقم العمارة، الدور، علامة مميزة"></textarea></label>
+
+        <div class="receipt-note"><b>مهم:</b> بعد ما تضغط "تأكيد الطلب" هيفتحلك واتساب المتجر ومعاك رسالة الطلب جاهزة. اضغط إرسال، وبعدها ابعت <b>سكرين تحويل الديبوزت</b> في نفس المحادثة. الطلب مش بيتأكد غير لما السكرين توصلنا.</div>
+
+        <p class="err" id="err" role="alert"></p>
+        <div class="summary" id="summary"></div>
+        <p class="ship-note">* الأسعار غير شاملة مصاريف الشحن</p>
+        <button type="submit" class="btn btn-dark block">تأكيد الطلب</button>
+        <button type="button" class="btn-link" id="back-cart">رجوع للسلة</button>
+        <p class="small center">بعد التأكيد هيفتح واتساب برسالة الطلب، وانت اللي بتضغط إرسال.</p>
+      </form>
+
+      <div id="step-done" hidden>
+        <p class="done-title">فاضل خطوة أخيرة</p>
+        <p class="done-text" id="done-text">اتفتح واتساب المتجر ومعاك رسالة الطلب جاهزة. اضغط <b>إرسال</b> بنفسك، وبعدها ابعت <b>سكرين تحويل الديبوزت</b> في نفس المحادثة. الطلب مش بيتأكد غير لما السكرين توصلنا.</p>
+        <button type="button" class="btn btn-dark block" id="done-wa">فتح واتساب المتجر</button>
+        <button type="button" class="btn-link" id="done-new">إخلاء السلة وعمل طلب جديد</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section dark" id="order">
+  <h2>اطلب في 3 خطوات</h2>
+  <ol class="steps">
+    <li><b>1</b><span>اختار المنتج واللون</span></li>
+    <li><b>2</b><span>أضفه للسلة واكتب بيانات الشحن</span></li>
+    <li><b>3</b><span>حوّل ديبوزت 200ج وارفع سكرين التحويل مع الطلب</span></li>
+  </ol>
+  <a class="btn btn-white" href="https://wa.me/201031387379" target="_blank" rel="noopener">ابدأ طلبك على واتساب</a>
+</section>
+
+<section class="section" id="contact">
+  <h2>تواصل معانا</h2>
+  <p class="note">شارع التحرير، أمام صيدلية د. مصطفى درديري وبجوار مطعم أردور، السويس</p>
+  <div class="links">
+    <a href="https://wa.me/201031387379" target="_blank" rel="noopener">واتساب</a>
+    <a href="https://www.instagram.com/kottoneg" target="_blank" rel="noopener">إنستغرام</a>
+    <a href="https://www.tiktok.com/@kottoneg" target="_blank" rel="noopener">تيك توك</a>
+  </div>
+</section>
+
+<footer>© Kotton, Suez</footer>
+<a class="fab" href="https://wa.me/201031387379" target="_blank" rel="noopener" aria-label="اطلب على واتساب">اطلب واتساب</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

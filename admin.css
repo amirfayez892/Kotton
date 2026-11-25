@@ -1,0 +1,47 @@
+/* لوحة تحكم Kotton */
+body.admin{background:#fafafa}
+.adm-main{max-width:760px;margin:0 auto;padding:26px 16px 80px}
+.adm-title{font-weight:800;font-size:17px}
+.adm-box{background:#fff;border:1px solid #eee;border-radius:18px;padding:24px 20px;margin-top:18px}
+.adm-box h2{font-size:22px;margin-bottom:6px}
+#login-form label,#editor-form label{display:block;font-weight:700;font-size:14px;margin-bottom:12px}
+#login-form input,#editor-form input[type=text],#editor-form input[type=number],#editor-form input[type=email],#editor-form input[type=password],#editor-form textarea{display:block;width:100%;margin-top:5px;padding:11px 12px;border:1.5px solid #ccc;border-radius:10px;font:inherit;font-weight:400;font-size:16px;background:#fff;color:#111}
+#login-form input:focus,#editor-form input:focus,#editor-form textarea:focus{outline:none;border-color:#111}
+.adm-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.adm-head h2{margin:0}
+.adm-actions{display:flex;gap:8px}
+.adm-actions .btn{padding:9px 18px;font-size:14px}
+
+.plist{display:grid;gap:12px;margin-top:16px}
+.prow{display:grid;grid-template-columns:64px 1fr;gap:12px;background:#fff;border:1px solid #eee;border-radius:14px;padding:10px;align-items:center}
+.prow img{width:64px;height:80px;object-fit:cover;border-radius:8px;background:#f2f2f2}
+.prow h4{font-size:16px}
+.prow .pmeta{color:#777;font-size:13px}
+.prow .pbtns{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+.pbtn{border:1.5px solid #111;background:#fff;border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.pbtn:hover{background:#111;color:#fff}
+.pbtn.danger{border-color:#b03a2e;color:#b03a2e}
+.pbtn.danger:hover{background:#b03a2e;color:#fff}
+.pbtn.warn{border-color:#b03a2e;background:#b03a2e;color:#fff}
+.pbtn.ok{border-color:#1e5631;color:#1e5631}
+.pbtn.ok:hover{background:#1e5631;color:#fff}
+.p-badge{display:inline-block;background:#b03a2e;color:#fff;border-radius:999px;font-size:11px;font-weight:700;padding:2px 10px;margin-right:6px;vertical-align:middle}
+
+.fset{border:1.5px solid #ddd;border-radius:12px;padding:14px;margin-bottom:14px}
+.fset legend{font-weight:800;font-size:14px;padding:0 6px}
+.sizechecks{display:flex;gap:10px;flex-wrap:wrap}
+.sizechecks label{display:flex!important;gap:6px;align-items:center;font-weight:700;border:1.5px solid #ccc;border-radius:999px;padding:6px 14px;cursor:pointer;margin:0!important}
+.sizechecks input{width:auto!important;margin:0!important}
+
+.c-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;background:#fff;border:1px solid #eee;border-radius:12px;padding:10px;margin-bottom:10px}
+.c-row input{margin:0!important}
+.c-imgcell{display:flex;gap:8px;align-items:center}
+.c-preview{width:44px;height:56px;object-fit:cover;border-radius:8px;background:#f2f2f2;border:1px solid #eee}
+.c-file-btn{border:1.5px dashed #999;border-radius:10px;padding:8px 10px;font-size:12.5px;font-weight:700;cursor:pointer;text-align:center}
+.c-file-btn:hover{border-color:#111}
+.c-pick{width:38px;height:38px;padding:2px;border:1.5px solid #ccc;border-radius:8px;background:#fff;cursor:pointer}
+.c-del{border:0;background:none;color:#b03a2e;font-size:20px;cursor:pointer;line-height:1}
+.checkline{display:flex!important;gap:8px;align-items:center;font-weight:700;margin:16px 0!important}
+.checkline input{width:auto!important;margin:0!important}
+#editor-view{margin-top:18px}
+.saving{opacity:.6;pointer-events:none}
